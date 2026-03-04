@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 25% 10%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 20% 14%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 20% 14%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 0 76% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 175 50% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 175 50% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 0 76% 70%;
+
+    --radius: 0.75rem;
+
+    --sos: 0 76% 60%;
+    --sos-foreground: 0 0% 100%;
+    --sos-glow: 0 76% 60%;
+
+    --safe: 145 60% 45%;
+    --safe-foreground: 0 0% 100%;
+
+    --warning: 40 90% 55%;
+    --warning-foreground: 0 0% 10%;
+
+    --navy: 220 25% 10%;
+    --navy-light: 220 20% 18%;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 220 20% 12%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 0 76% 70%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 20%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 0 76% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .sos-glow {
+    box-shadow: 0 0 30px hsl(var(--sos-glow) / 0.4), 0 0 60px hsl(var(--sos-glow) / 0.2);
+  }
+
+  .sos-pulse {
+    animation: sos-pulse 2s ease-in-out infinite;
+  }
+
+  .card-glass {
+    @apply bg-card/80 backdrop-blur-lg border border-border/50;
+  }
+}
+
+@keyframes sos-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--sos-glow) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 50px hsl(var(--sos-glow) / 0.6), 0 0 80px hsl(var(--sos-glow) / 0.3);
+  }
+}
